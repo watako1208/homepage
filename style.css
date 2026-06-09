@@ -246,6 +246,14 @@ body.light-theme .page-hero::before{
     url("assets/hero-earth-cubesat.png") right center / cover no-repeat;
 }
 .recruit-hero{min-height:76vh}
+.recruit-hero > div{
+  width:min(1120px,100%);
+}
+.recruit-hero h1{
+  max-width:12.2em;
+  font-size:clamp(48px,5vw,92px);
+  overflow-wrap:normal;
+}
 .recruit-hero::before{background:linear-gradient(90deg,rgba(3,5,10,.92),rgba(3,5,10,.48) 56%,rgba(3,5,10,.25)),url("assets/kitakyushu-manufacturing.png") center / cover no-repeat}
 body.light-theme .recruit-hero::before{background:linear-gradient(90deg,rgba(247,249,252,.94),rgba(247,249,252,.58) 56%,rgba(247,249,252,.3)),url("assets/kitakyushu-manufacturing.png") center / cover no-repeat}
 .message-card,.position-card,.link-card,.article-card,.access-card{
@@ -512,6 +520,7 @@ textarea{resize:vertical}.contact-form .button{width:100%;margin-top:8px}
 }
 @media (max-width:560px){
   .section-pad{padding-block:86px}.kv{min-height:92vh;padding-inline:22px}.kv h1{font-size:clamp(36px,10vw,54px);max-width:9em}
+  .recruit-hero h1{font-size:clamp(36px,11vw,54px);max-width:9.5em}
   .message-card{min-height:auto}
   .message-photo{width:100%;margin:26px 0 -26px}
   .interview-page{padding:104px 22px 76px}

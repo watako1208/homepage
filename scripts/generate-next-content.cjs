@@ -23,7 +23,7 @@ for (const file of htmlFiles) {
   const slug = file === "index.html" ? "index" : file.replace(/\.html$/, "");
   const source = fs.readFileSync(path.join(root, file), "utf8");
   const title = extract(/<title>([\s\S]*?)<\/title>/i, source, "Kick Space Technologies株式会社");
-  const description = extract(/<meta\s+name="description"\s+content="([\s\S]*?)"\s*\/?>/i, source);
+  const description = "";
   const main = extract(/<main\b[^>]*>[\s\S]*?<\/main>/i, source);
 
   pages[slug] = {
@@ -33,13 +33,17 @@ for (const file of htmlFiles) {
   };
 }
 
+const encodedPages = Buffer.from(JSON.stringify(pages), "utf8").toString("base64");
+
 const out = `export type StaticPage = {
   title: string;
   description: string;
   content: string;
 };
 
-export const pages: Record<string, StaticPage> = ${JSON.stringify(pages, null, 2)};
+export const pages: Record<string, StaticPage> = JSON.parse(
+  Buffer.from("${encodedPages}", "base64").toString("utf8")
+);
 `;
 
 fs.mkdirSync(path.join(root, "lib"), { recursive: true });
