@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap");
 
 :root{
   --bg:#03050a;
@@ -1388,5 +1388,162 @@ body.light-theme textarea{
     border-radius:2px;
     background:rgba(11,13,16,.96);
   }
+}
+
+/* ============================================================
+   Design refinement (pass 2)
+   Removes the "auto-generated template" tells: the loud all-caps
+   bilingual eyebrows, the 01/02/03 card numbering, the oversized
+   shouting headlines, the uniform hover-lift, and the excessive
+   vertical padding. Aim is a calmer, more editorial corporate tone.
+   Content is untouched — this is presentation only.
+   ============================================================ */
+
+/* Slightly deeper, less "neon" accents */
+:root{
+  --accent:#c49a51;
+  --accent-2:#5d7c8c;
+}
+body.light-theme{
+  --accent:#866024;
+  --accent-2:#3d5d6d;
+}
+
+/* Calmer vertical rhythm */
+.section-pad{padding:88px clamp(22px,4vw,42px)}
+@media (max-width:560px){.section-pad{padding-block:60px}}
+
+/* Quiet editorial section labels with a hairline rule instead of
+   the shouty all-caps "EN / 日本語" eyebrow. */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin:0 0 22px;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:none;
+}
+.eyebrow::before{
+  content:"";
+  width:28px;
+  height:1px;
+  background:var(--accent);
+  flex:0 0 auto;
+}
+
+/* Restrained headline scale + weight (was up to 80px / 900). */
+.kv h1,
+.recruit-hero h1,
+.page-hero h1{
+  font-size:clamp(30px,4.4vw,58px);
+  line-height:1.2;
+  font-weight:700;
+  letter-spacing:.01em;
+}
+.split h2,
+.section-head h2,
+.contact h2,
+.message-card h2{
+  font-size:clamp(25px,3.1vw,42px);
+  line-height:1.3;
+  font-weight:700;
+}
+.kv .lead,
+.page-hero .lead,
+.recruit-hero .lead{
+  font-size:clamp(15px,1.1vw,17px);
+  line-height:1.95;
+}
+
+/* De-emphasise the 01 / 02 / 03 numbering — a strong template tell. */
+.card-no{
+  display:block;
+  margin-bottom:6px;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.16em;
+}
+.card h3{font-size:19px;line-height:1.45}
+.service-number{
+  color:var(--muted);
+  font-size:32px;
+  font-weight:700;
+}
+
+/* Flatter cards: hairline border, no lift — just a quiet border tint. */
+.card:hover,
+.position-card:hover,
+.link-card:hover,
+.news-list article:hover,
+.team-logo-card:hover,
+.member-card:hover{
+  transform:none;
+  border-color:var(--accent);
+}
+
+/* Use the accent sparingly elsewhere. */
+.news-list time{color:var(--muted);font-weight:700;letter-spacing:.04em}
+.position-meta span{color:var(--muted)}
+
+/* ============================================================
+   Design refinement (pass 3) — typeface, imagery, structure
+   ============================================================ */
+
+/* A more designed Japanese gothic instead of the default Noto Sans
+   JP look, paired with Space Grotesk for Latin display text. */
+body{
+  font-family:"Inter","Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;
+}
+.kv h1,
+.recruit-hero h1,
+.page-hero h1,
+.split h2,
+.section-head h2,
+.contact h2,
+.message-card h2,
+.service-content h2,
+.card h3,
+.interview-article h1,
+.interview-article h2,
+.statement p{
+  font-family:"Space Grotesk","Zen Kaku Gothic New","Noto Sans JP",sans-serif;
+}
+
+/* Unify the AI-stock-looking service images into a deliberate,
+   brand-toned monochrome. Real photos (team, interviews) keep their
+   colour — only the illustrative service cards are treated. */
+.card img{
+  filter:grayscale(1) contrast(1.04) brightness(.96);
+  transition:filter .4s ease;
+}
+.card:hover img{
+  filter:grayscale(.35) contrast(1.04);
+}
+
+/* Editorial structure: a short rule under primary section headings
+   so the layout reads as intentionally designed, not auto-stamped. */
+.section-head h2{
+  position:relative;
+  padding-bottom:18px;
+}
+.section-head h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:52px;
+  height:2px;
+  background:var(--accent);
+}
+
+/* Break the rigid, dead-even card row: let the first service card
+   sit slightly proud so the grid feels composed rather than tiled. */
+@media (min-width:961px){
+  .cards{align-items:start}
+  .cards > .card:first-child{margin-top:-14px}
 }
 
