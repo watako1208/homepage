@@ -1532,3 +1532,77 @@ body{
   .cards{align-items:stretch}
   .cards > .card:first-child{margin-top:0}
 }
+
+@media (max-width:560px){
+  html,
+  body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+  .site-header{
+    gap:18px;
+    padding-inline:22px;
+  }
+  .brand-logo{
+    width:clamp(150px,46vw,190px);
+  }
+  .section-pad,
+  .kv,
+  .page-hero,
+  .recruit-hero{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    padding-inline:22px;
+    overflow:hidden;
+  }
+  .kv-copy,
+  .recruit-hero > div,
+  .message-panel,
+  .message-card,
+  .message-panel .body-text,
+  .cards,
+  .card{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  .kv h1,
+  .recruit-hero h1,
+  .page-hero h1{
+    max-width:100%;
+    font-size:clamp(34px,10.5vw,46px);
+    line-height:1.24;
+    overflow-wrap:anywhere;
+    word-break:normal;
+    line-break:strict;
+  }
+  .kv .lead,
+  .page-hero .lead,
+  .recruit-hero .lead,
+  .body-text p,
+  .card p{
+    max-width:100%;
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  .message-panel{
+    gap:28px;
+  }
+  .message-card h2{
+    max-width:100%;
+    overflow-wrap:anywhere;
+    word-break:normal;
+    line-break:strict;
+  }
+  .message-photo{
+    width:100%;
+    max-width:100%;
+  }
+  .kv-actions,
+  .kv-actions .button{
+    width:100%;
+    max-width:100%;
+  }
+}
